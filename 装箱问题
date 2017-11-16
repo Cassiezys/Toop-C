@@ -1,0 +1,31 @@
+/***
+*有一个箱子容量为V（正整数，0＜＝V＜＝20000），同时有n个物品（0＜n＜＝30），每个物品有一个体积（正整数）。 
+*要求n个物品中，任取若干个装入箱内，使箱子的剩余空间为最小。
+***/
+#include<stdio.h>
+///dp[v][i] = max(dp[v-a[i]][i] + a[i], dp[v][i-1])
+int max(int i,int j)
+{
+    if(i>=j)
+        return i;
+    else
+        return j;
+}
+int main()
+{
+    int a[32];
+    int dp[20000];
+    int i,j,v,n;
+    scanf("%d",&v);
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+        scanf("%d",&a[i]); //n个物品的体积(价值)
+    for(i=1;i<=n;i++)
+        for(j=v;j>=a[i];j--)
+    {
+        dp[j]=max(dp[j-a[i]]+a[i],dp[j]);
+    }
+    printf("%d",v-dp[v]);
+    return 0;
+
+}
