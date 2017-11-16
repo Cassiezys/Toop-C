@@ -1,0 +1,27 @@
+#include<stdio.h>
+int main()
+{
+    char n[50];
+    scanf("%s",n);
+    int l=strlen(n);
+    int i,a;
+    double t2=0,k1=1,k2=1;
+    for(i=0; i<l; i++)
+    {
+        if(n[i]=='-')
+        {
+            k1=1.5;
+            continue;
+        }
+        a=n[i]-'0';
+        if(a==2)
+            t2++;
+    }
+    if(a%2==0)
+        k2=2;
+    if(k1==1.5)
+        l--;
+    double sum;
+    sum=t2/l*100*k1*k2;
+    printf("%.2f%%",sum);  //输出%号时打两个%%
+}
