@@ -1,0 +1,19 @@
+#include<stdio.h>
+///dp[i][j]=dp[i][j-i]+dp[i-1][j-1];
+// dp[i][j-i] 第i份个数大于1的时候的方法数
+//dp[i-1][j-1]第i份个数等于1的时候的方法数
+int main()
+{
+    int i,j,n,k,dp[10][205];
+    scanf("%d%d",&n,&k);
+    dp[0][0]=1;
+    for(i=1;i<=k;i++)
+    {
+        for(j=i;j<=n;j++)
+        {
+            dp[i][j]=dp[i][j-i]+dp[i-1][j-1];
+        }
+    }
+    printf("%d",dp[k][n]);
+
+}
